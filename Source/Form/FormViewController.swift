@@ -35,6 +35,16 @@ open class FormViewController: UIViewController {
 		SwiftyFormLog("subclass must implement populate()")
 	}
 
+	open func reloadForm() {
+		formBuilder.removeAll()
+		self.populate(formBuilder)
+		self.title = formBuilder.navigationTitle
+		dataSource = formBuilder.result(self)
+		self.tableView.dataSource = dataSource
+		self.tableView.delegate = dataSource
+		self.tableView.reloadData()
+	}
+
 	override open func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
