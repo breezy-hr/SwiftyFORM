@@ -1,4 +1,4 @@
-// MIT license. Copyright (c) 2016 SwiftyFORM. All rights reserved.
+// MIT license. Copyright (c) 2017 SwiftyFORM. All rights reserved.
 import UIKit
 
 public struct TextViewFormItemCellSizes {
@@ -19,12 +19,12 @@ public struct TextViewCellModel {
 	}
 }
 
-public class TextViewCell: UITableViewCell, UITextViewDelegate, CellHeightProvider {
+public class TextViewCell: UITableViewCell {
 	public let titleLabel = UILabel()
 	public let placeholderLabel = UILabel()
 	public let textView = UITextView()
 	public let model: TextViewCellModel
-	
+
 	public init(model: TextViewCellModel) {
 		self.model = model
 		super.init(style: .value1, reuseIdentifier: nil)
@@ -42,9 +42,7 @@ public class TextViewCell: UITableViewCell, UITextViewDelegate, CellHeightProvid
 		textView.backgroundColor = UIColor.clear
 		textView.isScrollEnabled = false
 		textView.delegate = self
-
 		textView.textContainer.lineFragmentPadding = 0
-		textView.textContainerInset = UIEdgeInsetsMake(5, 16, 10, 16)
 
 		if model.toolbarMode == .simple {
 			textView.inputAccessoryView = toolbar
@@ -55,23 +53,23 @@ public class TextViewCell: UITableViewCell, UITextViewDelegate, CellHeightProvid
 		contentView.addSubview(placeholderLabel)
 
 		clipsToBounds = true
-		
+
 		self.addGestureRecognizer(tapGestureRecognizer)
 	}
-	
+
 	public required init(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-	
-	public func handleTap(_ sender: UITapGestureRecognizer) {
+
+	@objc public func handleTap(_ sender: UITapGestureRecognizer) {
 		_ = self.becomeFirstResponder()
 	}
-	
+
 	public lazy var tapGestureRecognizer: UITapGestureRecognizer = {
 		let gr = UITapGestureRecognizer(target: self, action: #selector(TextViewCell.handleTap(_:)))
 		return gr
 		}()
-	
+
 	public lazy var toolbar: SimpleToolbar = {
 		let instance = SimpleToolbar()
 		weak var weakSelf = self
@@ -92,42 +90,33 @@ public class TextViewCell: UITableViewCell, UITextViewDelegate, CellHeightProvid
 		}
 		return instance
 		}()
-	
+
 	public func updateToolbarButtons() {
 		if model.toolbarMode == .simple {
 			toolbar.updateButtonConfiguration(self)
 		}
 	}
-	
+
 	public func gotoPrevious() {
 		SwiftyFormLog("make previous cell first responder")
 		form_makePreviousCellFirstResponder()
 	}
-	
+
 	public func gotoNext() {
 		SwiftyFormLog("make next cell first responder")
 		form_makeNextCellFirstResponder()
 	}
-	
+
 	public func dismissKeyboard() {
 		SwiftyFormLog("dismiss keyboard")
 		_ = resignFirstResponder()
-	}
-	
-	public func textViewDidBeginEditing(_ textView: UITextView) {
-		updateToolbarButtons()
-	}
-
-	public func textViewDidChange(_ textView: UITextView) {
-		updateValue()
-		model.valueDidChange(textView.text)
 	}
 
 	public func updateValue() {
 		let s = textView.text
 		let hasText = (s?.characters.count)! > 0
 		placeholderLabel.isHidden = hasText
-		
+
 		let tableView: UITableView? = form_tableView()
 		if let tv = tableView {
 			setNeedsLayout()
@@ -135,51 +124,52 @@ public class TextViewCell: UITableViewCell, UITextViewDelegate, CellHeightProvid
 			tv.endUpdates()
 		}
 	}
-	
+
 	public func setValueWithoutSync(_ value: String) {
 		SwiftyFormLog("set value \(value)")
 		textView.text = value
 		updateValue()
 	}
-	
-	public func compute(_ cellWidth: CGFloat) -> TextViewFormItemCellSizes {
-		
+
+	public func compute() -> TextViewFormItemCellSizes {
+		let cellWidth: CGFloat = bounds.width
+
 		var titleLabelFrame = CGRect.zero
 		var placeholderLabelFrame = CGRect.zero
 		var textViewFrame = CGRect.zero
 		let errorLabelFrame = CGRect.zero
 		var maxY: CGFloat = 0
-		let veryTallCell = CGRect(x: 0, y: 0, width: cellWidth, height: CGFloat.greatestFiniteMagnitude)
+		var veryTallCell = CGRect(x: 0, y: 0, width: cellWidth, height: CGFloat.greatestFiniteMagnitude)
+
+		var layoutMargins = self.layoutMargins
+		layoutMargins.top = 0
+		layoutMargins.bottom = 0
+		veryTallCell = UIEdgeInsetsInsetRect(veryTallCell, layoutMargins)
+
 		var (slice, remainder) = veryTallCell.divided(atDistance: 10, from: .minYEdge)
-		
-		if true {
-			let dx: CGFloat = 16
-			var availableSize = veryTallCell.size
-			availableSize.width -= dx * 2
-			let size = titleLabel.sizeThatFits(availableSize)
+
+		do {
+			let size = titleLabel.sizeThatFits(veryTallCell.size)
 			(slice, remainder) = remainder.divided(atDistance: size.height, from: .minYEdge)
-			titleLabelFrame = slice.insetBy(dx: dx, dy: 0)
+			titleLabelFrame = slice
 		}
-		
+
 		let bottomRemainder = remainder
-		
-		if true {
+
+		do {
 			(slice, remainder) = bottomRemainder.divided(atDistance: 5.5, from: .minYEdge)
-			let dx: CGFloat = 16
-			var availableSize = veryTallCell.size
-			availableSize.width -= dx * 2
-			let size = placeholderLabel.sizeThatFits(availableSize)
+			let size = placeholderLabel.sizeThatFits(veryTallCell.size)
 			(slice, remainder) = remainder.divided(atDistance: size.height, from: .minYEdge)
-			placeholderLabelFrame = slice.insetBy(dx: dx, dy: 0)
+			placeholderLabelFrame = slice
 		}
 		(slice, remainder) = remainder.divided(atDistance: 10, from: .minYEdge)
 		maxY = slice.maxY
-		
-		if true {
+
+		do {
 			let availableSize = veryTallCell.size
 			let size = textView.sizeThatFits(availableSize)
 			(slice, remainder) = bottomRemainder.divided(atDistance: size.height, from: .minYEdge)
-			textViewFrame = slice
+			textViewFrame = CGRect(x: bounds.minX, y: slice.minY, width: bounds.width, height: slice.height)
 		}
 		maxY = max(textViewFrame.maxY, maxY)
 
@@ -192,34 +182,51 @@ public class TextViewCell: UITableViewCell, UITextViewDelegate, CellHeightProvid
 		return result
 	}
 
-
 	public override func layoutSubviews() {
 		super.layoutSubviews()
-		
-		let sizes: TextViewFormItemCellSizes = compute(bounds.width)
+
+		let sizes: TextViewFormItemCellSizes = compute()
 		titleLabel.frame = sizes.titleLabelFrame
 		placeholderLabel.frame = sizes.placeholderLabelFrame
 		textView.frame = sizes.textViewFrame
+
+		var textViewInset = self.layoutMargins
+		textViewInset.top = 5
+		textViewInset.bottom = 10
+		textView.textContainerInset = textViewInset
 	}
-	
-	public func form_cellHeight(indexPath: IndexPath, tableView: UITableView) -> CGFloat {
-		let sizes: TextViewFormItemCellSizes = compute(bounds.width)
-		let value = sizes.cellHeight
-		//SwiftyFormLog("compute height of row: \(value)")
-		return value
-	}
-	
+
 	// MARK: UIResponder
-	
-	public override var canBecomeFirstResponder : Bool {
+
+	public override var canBecomeFirstResponder: Bool {
 		return true
 	}
-	
+
 	public override func becomeFirstResponder() -> Bool {
 		return textView.becomeFirstResponder()
 	}
-	
+
 	public override func resignFirstResponder() -> Bool {
 		return textView.resignFirstResponder()
+	}
+}
+
+extension TextViewCell: UITextViewDelegate {
+	public func textViewDidBeginEditing(_ textView: UITextView) {
+		updateToolbarButtons()
+	}
+
+	public func textViewDidChange(_ textView: UITextView) {
+		updateValue()
+		model.valueDidChange(textView.text)
+	}
+}
+
+extension TextViewCell: CellHeightProvider {
+	public func form_cellHeight(indexPath: IndexPath, tableView: UITableView) -> CGFloat {
+		let sizes: TextViewFormItemCellSizes = compute()
+		let value = sizes.cellHeight
+		//SwiftyFormLog("compute height of row: \(value)")
+		return value
 	}
 }

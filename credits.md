@@ -2,6 +2,18 @@
 
 This is a partial list of people that have contributed to SwiftyFORM. Thank you!
 
+* [Sreejith Ajithkumar](https://github.com/cresouls)
+* [Hiroaki Towata](https://github.com/saxograph)
+* [六阿哥](https://github.com/6ag)
+* [Vinvu Software](https://github.com/VinvuSoftware)
+* [Bojun Wu](https://github.com/bojunwu)
+* [Christophe Braud](https://github.com/TofPlay)
+* [Mark Peterson](https://github.com/skram)
+* [Thanh Hai](https://github.com/thanhhaiqtvn)
+* [Philipp Böhm](https://github.com/pboehm)
+* [Matt Baer](https://github.com/thebaer)
+* [Tobias Due Munk](https://github.com/duemunk)
+* [Chester Liu](https://github.com/skyline75489)
 * [Alexey Bondarchuk](https://github.com/lMorninGl)
 * [Monica Silotto](https://github.com/h-umus)
 * [JuseongJee](https://github.com/JuseongJee)

@@ -1,5 +1,23 @@
 ## 📄 Change Log
 
+### 1.5.0
+
+ * Xcode9 preparations. Now compiles with Xcode9beta6.
+ * Swiftlint
+
+### 1.4.0
+
+ * Upgraded from Xcode8.2.1 to Xcode8.3.1
+ * Classes derived from FormViewController can now be used inside storyboards. Added 'SettingsViewController' that demonstrates this.
+   FormViewController.init(coder aDecoder: NSCoder) have until now invoked super.init(nibName: nil, bundle: nil) so it has never worked inside a storyboard.
+   FormViewController now instead implements init?(coder aDecoder: NSCoder) so it can invoke super.init(coder: aDecoder).
+ * FormViewController.reloadForm() added.
+
+### 1.3.0
+
+ * iPad: cells now adheres to `cellLayoutMarginsFollowReadableWidth = true` and uses the layoutMargin left/right for computing the frames.
+ * DatePickerFormItem.minuteInterval added.
+
 ### 1.2.0
 
  * Simplified specification pattern. In the future the `CompositeSpecification` class will be removed. Instead of subclassing `CompositeSpecification` one must instead subclass `Specification`.
