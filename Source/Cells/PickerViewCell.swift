@@ -9,6 +9,7 @@ struct PickerViewCellConstants {
 
 public class PickerViewCellModel {
 	var title: String = ""
+	var titleColor: UIColor = UIColor.black
 	var expandCollapseWhenSelectingRow = true
 	var selectionStyle = UITableViewCellSelectionStyle.default
 
@@ -162,8 +163,8 @@ public class PickerViewToggleCell: UITableViewCell, SelectRowDelegate, DontColla
 	// MARK: AssignAppearance
 
 	public func assignDefaultColors() {
-		textLabel?.textColor = UIColor.black
-		detailTextLabel?.textColor = UIColor.gray
+		textLabel?.textColor = model.titleColor
+		detailTextLabel?.textColor = UIColor.black
 	}
 
 	public func assignTintColors() {

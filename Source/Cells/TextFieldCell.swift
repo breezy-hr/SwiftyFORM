@@ -34,6 +34,7 @@ public class TextFieldFormItemCellSizes {
 
 public struct TextFieldFormItemCellModel {
 	var title: String = ""
+	var titleColor: UIColor = UIColor.black
 	var toolbarMode: ToolbarMode = .simple
 	var placeholder: String = ""
 	var keyboardType: UIKeyboardType = .default
@@ -66,6 +67,7 @@ public class TextFieldFormItemCell: UITableViewCell {
 		selectionStyle = .none
 
 		titleLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+		titleLabel.textColor = model.titleColor
 		textField.font  = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
 		errorLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.caption2)
 

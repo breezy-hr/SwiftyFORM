@@ -7,10 +7,17 @@ public class StaticTextFormItem: FormItem {
 	}
 
 	public var title: String = ""
+	public var titleColor: UIColor = UIColor.black
 
 	@discardableResult
 	public func title(_ title: String) -> Self {
 		self.title = title
+		return self
+	}
+
+	@discardableResult
+	public func titleColor(_ color: UIColor) -> Self {
+		self.titleColor = color
 		return self
 	}
 

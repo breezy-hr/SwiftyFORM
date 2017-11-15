@@ -3,6 +3,7 @@ import UIKit
 
 public struct SwitchCellModel {
 	var title: String = ""
+	var titleColor: UIColor = UIColor.black
 
 	var valueDidChange: (Bool) -> Void = { (value: Bool) in
 		SwiftyFormLog("value \(value)")
@@ -19,6 +20,7 @@ public class SwitchCell: UITableViewCell {
 		super.init(style: .default, reuseIdentifier: nil)
 		selectionStyle = .none
 		textLabel?.text = model.title
+		textLabel?.textColor = model.titleColor
 
 		switchView.addTarget(self, action: #selector(SwitchCell.valueChanged), for: .valueChanged)
 		accessoryView = switchView

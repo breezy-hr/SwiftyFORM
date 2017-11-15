@@ -145,6 +145,7 @@ class PopulateTableView: FormItemVisitor {
 	func visit(object: DatePickerFormItem) {
 		let model = DatePickerCellModel()
 		model.title = object.title
+		model.titleColor = object.titleColor
 		model.datePickerMode = mapDatePickerMode(object.datePickerMode)
 		model.locale = object.locale
 		model.minimumDate = object.minimumDate
@@ -210,6 +211,7 @@ class PopulateTableView: FormItemVisitor {
 	func visit(object: OptionPickerFormItem) {
 		var model = OptionViewControllerCellModel()
 		model.title = object.title
+		model.titleColor = object.titleColor
 		model.placeholder = object.placeholder
 		model.optionField = object
 		model.selectedOptionRow = object.selected
@@ -508,6 +510,7 @@ class PopulateTableView: FormItemVisitor {
 	func visit(object: SwitchFormItem) {
 		var model = SwitchCellModel()
 		model.title = object.title
+		model.titleColor = object.titleColor
 
 		weak var weakObject = object
 		model.valueDidChange = { (value: Bool) in
@@ -538,6 +541,7 @@ class PopulateTableView: FormItemVisitor {
 		var model = TextFieldFormItemCellModel()
 		model.toolbarMode = self.model.toolbarMode
 		model.title = object.title
+		model.titleColor = object.titleColor
 		model.placeholder = object.placeholder
 		model.keyboardType = object.keyboardType
 		model.returnKeyType = object.returnKeyType
@@ -591,6 +595,7 @@ class PopulateTableView: FormItemVisitor {
 		var model = TextViewCellModel()
 		model.toolbarMode = self.model.toolbarMode
 		model.title = object.title
+		model.titleColor = object.titleColor
 		model.placeholder = object.placeholder
 		weak var weakObject = object
 		model.valueDidChange = { (value: String) in
@@ -614,7 +619,7 @@ class PopulateTableView: FormItemVisitor {
 	// MARK: ViewControllerFormItem
 
 	func visit(object: ViewControllerFormItem) {
-		let model = ViewControllerFormItemCellModel(title: object.title, placeholder: object.placeholder)
+		let model = ViewControllerFormItemCellModel(title: object.title, placeholder: object.placeholder, titleColor: object.titleColor)
 		let willPopViewController = WillPopCustomViewController(object: object)
 
 		weak var weakViewController = self.model.viewController
@@ -649,6 +654,7 @@ class PopulateTableView: FormItemVisitor {
 	func visit(object: PickerViewFormItem) {
 		let model = PickerViewCellModel()
 		model.title = object.title
+		model.titleColor = object.titleColor
 		model.value = object.value
 		model.titles = object.pickerTitles
 		model.humanReadableValueSeparator = object.humanReadableValueSeparator

@@ -3,9 +3,18 @@ import UIKit
 
 public class ViewControllerFormItemCellModel {
 	public let title: String
+	public let titleColor: UIColor
 	public let placeholder: String
+
+	public init(title: String, placeholder: String, titleColor: UIColor) {
+		self.title = title
+		self.titleColor = titleColor
+		self.placeholder = placeholder
+	}
+
 	public init(title: String, placeholder: String) {
 		self.title = title
+		self.titleColor = UIColor.black
 		self.placeholder = placeholder
 	}
 }
@@ -20,6 +29,7 @@ public class ViewControllerFormItemCell: UITableViewCell, SelectRowDelegate {
 		super.init(style: .value1, reuseIdentifier: nil)
 		accessoryType = .disclosureIndicator
 		textLabel?.text = model.title
+		textLabel?.textColor = model.titleColor
 		detailTextLabel?.text = model.placeholder
 	}
 

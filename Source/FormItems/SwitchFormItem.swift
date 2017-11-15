@@ -7,6 +7,7 @@ public class SwitchFormItem: FormItem {
 	}
 
 	public var title: String = ""
+	public var titleColor: UIColor = UIColor.black
 
 	@discardableResult
 	public func title(_ title: String) -> Self {

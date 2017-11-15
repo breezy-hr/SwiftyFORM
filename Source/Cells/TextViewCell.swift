@@ -11,6 +11,7 @@ public struct TextViewFormItemCellSizes {
 
 public struct TextViewCellModel {
 	var title: String = ""
+	var titleColor: UIColor = UIColor.black
 	var placeholder: String = ""
 	var toolbarMode: ToolbarMode = .simple
 
@@ -32,6 +33,7 @@ public class TextViewCell: UITableViewCell {
 
 		titleLabel.text = model.title
 		titleLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+		titleLabel.textColor = model.titleColor
 
 		placeholderLabel.text = model.placeholder
 		placeholderLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
