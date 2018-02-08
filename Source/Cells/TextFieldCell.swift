@@ -48,6 +48,10 @@ public struct TextFieldFormItemCellModel {
 	var valueDidChange: (String) -> Void = { (value: String) in
 		SwiftyFormLog("value \(value)")
 	}
+    
+    var didEndEditing: (String) -> Void = { (value: String) in
+        SwiftyFormLog("value \(value)")
+    }
 }
 
 public class TextFieldFormItemCell: UITableViewCell {
@@ -399,6 +403,7 @@ extension TextFieldFormItemCell: UITextFieldDelegate {
 		let isTextValid = validateAndUpdateErrorIfNeeded(s, shouldInstallTimer: true, checkSubmitRule: true)
 		if isTextValid {
 			textField.resignFirstResponder()
+			model.didEndEditing(s)
 		}
 		return false
 	}
