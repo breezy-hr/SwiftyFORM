@@ -11,6 +11,8 @@ public class DatePickerCellModel {
 	var title: String = ""
 	var titleColor: UIColor = UIColor.black
 	var titleFont: UIFont = .preferredFont(forTextStyle: .body)
+	var textColor: UIColor = .black
+	var textFont: UIFont = .preferredFont(forTextStyle: .body)
 	var datePickerMode: UIDatePickerMode = .dateAndTime
 	var locale: Locale? // default is Locale.current, setting nil returns to default
 	var minimumDate: Date? // specify min/max date range. default is nil. When min > max, the values are ignored. Ignored in countdown timer mode
@@ -59,6 +61,7 @@ public class DatePickerToggleCell: UITableViewCell, SelectRowDelegate, DontColla
 		selectionStyle = model.selectionStyle
 		textLabel?.text = model.title
 		textLabel?.font = model.titleFont
+		detailTextLabel?.font = model.textFont
 
 		updateValue()
 
@@ -211,7 +214,7 @@ public class DatePickerToggleCell: UITableViewCell, SelectRowDelegate, DontColla
 
 	public func assignDefaultColors() {
 		textLabel?.textColor = model.titleColor
-		detailTextLabel?.textColor = UIColor.black
+		detailTextLabel?.textColor = model.textColor
 	}
 
 	public func assignTintColors() {

@@ -147,6 +147,8 @@ class PopulateTableView: FormItemVisitor {
 		model.title = object.title
 		model.titleColor = object.titleColor
 		model.titleFont = object.titleFont
+		model.textColor = object.textColor
+		model.textFont = object.textFont
 		model.datePickerMode = mapDatePickerMode(object.datePickerMode)
 		model.locale = object.locale
 		model.minimumDate = object.minimumDate
