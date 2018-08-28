@@ -3,6 +3,10 @@ import UIKit
 
 public struct ButtonCellModel {
 	var title: String = ""
+	var titleColor: UIColor = .black
+	var titleFont: UIFont = .preferredFont(forTextStyle: .body)
+	var titleAlignment: NSTextAlignment = .center
+	var backgroundColor: UIColor = .white
 
 	var action: () -> Void = {
 		SwiftyFormLog("action")
@@ -25,7 +29,10 @@ public class ButtonCell: UITableViewCell, SelectRowDelegate {
 
 	public func loadWithModel(_ model: ButtonCellModel) {
 		textLabel?.text = model.title
-		textLabel?.textAlignment = NSTextAlignment.center
+		textLabel?.textColor = model.titleColor
+		textLabel?.font = model.titleFont
+		textLabel?.textAlignment = model.titleAlignment
+		self.backgroundColor = model.backgroundColor
 	}
 
 	public func form_didSelectRow(indexPath: IndexPath, tableView: UITableView) {

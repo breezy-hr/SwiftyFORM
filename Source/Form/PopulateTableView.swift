@@ -112,6 +112,10 @@ class PopulateTableView: FormItemVisitor {
 	func visit(object: ButtonFormItem) {
 		var model = ButtonCellModel()
 		model.title = object.title
+		model.titleColor = object.titleColor
+		model.titleFont = object.titleFont
+		model.titleAlignment = object.titleAlignment
+		model.backgroundColor = object.backgroundColor
 		model.action = object.action
 		let cell = ButtonCell(model: model)
 		cells.append(cell)
