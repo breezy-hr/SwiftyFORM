@@ -633,7 +633,7 @@ class PopulateTableView: FormItemVisitor {
 	// MARK: ViewControllerFormItem
 
 	func visit(object: ViewControllerFormItem) {
-		let model = ViewControllerFormItemCellModel(title: object.title, placeholder: object.placeholder, titleColor: object.titleColor)
+		let model = ViewControllerFormItemCellModel(title: object.title, placeholder: object.placeholder, titleColor: object.titleColor, titleFont: object.titleFont)
 		let willPopViewController = WillPopCustomViewController(object: object)
 
 		weak var weakViewController = self.model.viewController

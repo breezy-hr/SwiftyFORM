@@ -4,17 +4,20 @@ import UIKit
 public class ViewControllerFormItemCellModel {
 	public let title: String
 	public let titleColor: UIColor
+	public let titleFont: UIFont
 	public let placeholder: String
 
-	public init(title: String, placeholder: String, titleColor: UIColor) {
+	public init(title: String, placeholder: String, titleColor: UIColor, titleFont: UIFont) {
 		self.title = title
 		self.titleColor = titleColor
+		self.titleFont = titleFont
 		self.placeholder = placeholder
 	}
 
 	public init(title: String, placeholder: String) {
 		self.title = title
 		self.titleColor = UIColor.black
+		self.titleFont = .preferredFont(forTextStyle: .body)
 		self.placeholder = placeholder
 	}
 }
@@ -30,6 +33,7 @@ public class ViewControllerFormItemCell: UITableViewCell, SelectRowDelegate {
 		accessoryType = .disclosureIndicator
 		textLabel?.text = model.title
 		textLabel?.textColor = model.titleColor
+		textLabel?.font = model.titleFont
 		detailTextLabel?.text = model.placeholder
 	}
 

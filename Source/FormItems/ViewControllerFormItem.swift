@@ -42,6 +42,13 @@ public class ViewControllerFormItem: FormItem {
 		self.titleColor = color ?? .black
 		return self
 	}
+	
+	public var titleFont: UIFont = .preferredFont(forTextStyle: .body)
+	@discardableResult
+	public func titleFont(_ font: UIFont) -> Self {
+		self.titleFont = font
+		return self
+	}
 
 	@discardableResult
 	public func viewController(_ aClass: UIViewController.Type) -> Self {
