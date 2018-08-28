@@ -10,6 +10,7 @@ struct DatePickerCellConstants {
 public class DatePickerCellModel {
 	var title: String = ""
 	var titleColor: UIColor = UIColor.black
+	var titleFont: UIFont = .preferredFont(forTextStyle: .body)
 	var datePickerMode: UIDatePickerMode = .dateAndTime
 	var locale: Locale? // default is Locale.current, setting nil returns to default
 	var minimumDate: Date? // specify min/max date range. default is nil. When min > max, the values are ignored. Ignored in countdown timer mode
@@ -57,6 +58,7 @@ public class DatePickerToggleCell: UITableViewCell, SelectRowDelegate, DontColla
 		super.init(style: .value1, reuseIdentifier: nil)
 		selectionStyle = model.selectionStyle
 		textLabel?.text = model.title
+		textLabel?.font = model.titleFont
 
 		updateValue()
 

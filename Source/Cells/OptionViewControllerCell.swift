@@ -4,6 +4,7 @@ import UIKit
 public struct OptionViewControllerCellModel {
 	var title: String = ""
 	var titleColor: UIColor = UIColor.black
+	var titleFont: UIFont = .preferredFont(forTextStyle: .body)
 	var placeholder: String = ""
 	var optionField: OptionPickerFormItem?
 	var selectedOptionRow: OptionRowModel?
@@ -26,6 +27,7 @@ public class OptionViewControllerCell: UITableViewCell, SelectRowDelegate {
 		accessoryType = .disclosureIndicator
 		textLabel?.text = model.title
 		textLabel?.textColor = model.titleColor
+		textLabel?.font = model.titleFont
 		detailTextLabel?.textColor = UIColor.black
 		updateValue()
 	}

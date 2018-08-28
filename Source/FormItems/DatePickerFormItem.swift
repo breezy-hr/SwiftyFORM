@@ -35,6 +35,19 @@ public class DatePickerFormItem: FormItem {
 		self.title = title
 		return self
 	}
+	
+	@discardableResult
+	public func titleColor(_ color: UIColor?) -> Self {
+		self.titleColor = color ?? .black
+		return self
+	}
+	
+	public var titleFont: UIFont = .preferredFont(forTextStyle: .body)
+	@discardableResult
+	public func titleFont(_ font: UIFont) -> Self {
+		self.titleFont = font
+		return self
+	}
 
 	/**
 	### Collapsed

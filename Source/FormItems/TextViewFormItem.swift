@@ -16,10 +16,33 @@ public class TextViewFormItem: FormItem {
 
 	public var title: String = ""
 	public var titleColor: UIColor = UIColor.black
-
+	public var titleFont: UIFont = .preferredFont(forTextStyle: .body)
+	public var textColor: UIColor = .black
+	public var textFont: UIFont = .preferredFont(forTextStyle: .body)
+	
 	@discardableResult
 	public func title(_ title: String) -> Self {
 		self.title = title
+		return self
+	}
+	@discardableResult
+	public func titleColor(_ color: UIColor?) -> Self {
+		self.titleColor = color ?? .black
+		return self
+	}
+	@discardableResult
+	public func titleFont(_ font: UIFont) -> Self {
+		self.titleFont = font
+		return self
+	}
+	@discardableResult
+	public func textColor(_ color: UIColor?) -> Self {
+		self.textColor = color ?? .black
+		return self
+	}
+	@discardableResult
+	public func textFont(_ font: UIFont) -> Self {
+		self.textFont = font
 		return self
 	}
 

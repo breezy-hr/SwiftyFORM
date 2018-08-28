@@ -146,6 +146,7 @@ class PopulateTableView: FormItemVisitor {
 		let model = DatePickerCellModel()
 		model.title = object.title
 		model.titleColor = object.titleColor
+		model.titleFont = object.titleFont
 		model.datePickerMode = mapDatePickerMode(object.datePickerMode)
 		model.locale = object.locale
 		model.minimumDate = object.minimumDate
@@ -212,6 +213,7 @@ class PopulateTableView: FormItemVisitor {
 		var model = OptionViewControllerCellModel()
 		model.title = object.title
 		model.titleColor = object.titleColor
+		model.titleFont = object.titleFont
 		model.placeholder = object.placeholder
 		model.optionField = object
 		model.selectedOptionRow = object.selected
@@ -511,6 +513,7 @@ class PopulateTableView: FormItemVisitor {
 		var model = SwitchCellModel()
 		model.title = object.title
 		model.titleColor = object.titleColor
+		model.titleFont = object.titleFont
 
 		weak var weakObject = object
 		model.valueDidChange = { (value: Bool) in
@@ -542,6 +545,9 @@ class PopulateTableView: FormItemVisitor {
 		model.toolbarMode = self.model.toolbarMode
 		model.title = object.title
 		model.titleColor = object.titleColor
+		model.titleFont = object.titleFont
+		model.textColor = object.textColor
+		model.textFont = object.textFont
 		model.placeholder = object.placeholder
 		model.keyboardType = object.keyboardType
 		model.returnKeyType = object.returnKeyType
@@ -601,6 +607,9 @@ class PopulateTableView: FormItemVisitor {
 		model.toolbarMode = self.model.toolbarMode
 		model.title = object.title
 		model.titleColor = object.titleColor
+		model.titleFont = object.titleFont
+		model.textColor = object.textColor
+		model.textFont = object.textFont
 		model.placeholder = object.placeholder
 		weak var weakObject = object
 		model.valueDidChange = { (value: String) in
@@ -660,6 +669,7 @@ class PopulateTableView: FormItemVisitor {
 		let model = PickerViewCellModel()
 		model.title = object.title
 		model.titleColor = object.titleColor
+		model.titleFont = object.titleFont
 		model.value = object.value
 		model.titles = object.pickerTitles
 		model.humanReadableValueSeparator = object.humanReadableValueSeparator

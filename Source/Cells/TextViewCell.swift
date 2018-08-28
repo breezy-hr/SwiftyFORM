@@ -12,6 +12,9 @@ public struct TextViewFormItemCellSizes {
 public struct TextViewCellModel {
 	var title: String = ""
 	var titleColor: UIColor = UIColor.black
+	var titleFont: UIFont = .preferredFont(forTextStyle: .body)
+	var textColor: UIColor = .black
+	var textFont: UIFont = .preferredFont(forTextStyle: .body)
 	var placeholder: String = ""
 	var toolbarMode: ToolbarMode = .simple
 
@@ -32,15 +35,15 @@ public class TextViewCell: UITableViewCell {
 		selectionStyle = .none
 
 		titleLabel.text = model.title
-		titleLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+		titleLabel.font = model.titleFont
 		titleLabel.textColor = model.titleColor
 
 		placeholderLabel.text = model.placeholder
 		placeholderLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
 		placeholderLabel.textColor = UIColor.lightGray
 
-		textView.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
-		textView.textColor = UIColor.black
+		textView.font = model.textFont
+		textView.textColor = model.textColor
 		textView.backgroundColor = UIColor.clear
 		textView.isScrollEnabled = false
 		textView.delegate = self

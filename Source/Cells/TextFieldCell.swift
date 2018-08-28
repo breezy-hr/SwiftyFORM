@@ -35,6 +35,10 @@ public class TextFieldFormItemCellSizes {
 public struct TextFieldFormItemCellModel {
 	var title: String = ""
 	var titleColor: UIColor = UIColor.black
+	var titleFont: UIFont = .preferredFont(forTextStyle: .body)
+	var textColor: UIColor = .black
+	var textFont: UIFont = .preferredFont(forTextStyle: .body)
+	
 	var toolbarMode: ToolbarMode = .simple
 	var placeholder: String = ""
 	var keyboardType: UIKeyboardType = .default
@@ -70,9 +74,8 @@ public class TextFieldFormItemCell: UITableViewCell {
 
 		selectionStyle = .none
 
-		titleLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+		titleLabel.font = model.titleFont
 		titleLabel.textColor = model.titleColor
-		textField.font  = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
 		errorLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.caption2)
 
 		errorLabel.textColor = UIColor.red
@@ -88,6 +91,9 @@ public class TextFieldFormItemCell: UITableViewCell {
 		contentView.addSubview(errorLabel)
 
 		titleLabel.text = model.title
+		
+		textField.font  = model.textFont
+		textField.textColor = model.textColor
 		textField.placeholder = model.placeholder
 		textField.autocapitalizationType = model.autocapitalizationType
 		textField.autocorrectionType = model.autocorrectionType

@@ -14,6 +14,19 @@ public class SwitchFormItem: FormItem {
 		self.title = title
 		return self
 	}
+	
+	@discardableResult
+	public func titleColor(_ color: UIColor?) -> Self {
+		self.titleColor = color ?? .black
+		return self
+	}
+	
+	public var titleFont: UIFont = .preferredFont(forTextStyle: .body)
+	@discardableResult
+	public func titleFont(_ font: UIFont) -> Self {
+		self.titleFont = font
+		return self
+	}
 
 	public typealias SyncBlock = (_ value: Bool, _ animated: Bool) -> Void
 	public var syncCellWithValue: SyncBlock = { (value: Bool, animated: Bool) in

@@ -36,6 +36,12 @@ public class ViewControllerFormItem: FormItem {
 		self.title = title
 		return self
 	}
+	
+	@discardableResult
+	public func titleColor(_ color: UIColor?) -> Self {
+		self.titleColor = color ?? .black
+		return self
+	}
 
 	@discardableResult
 	public func viewController(_ aClass: UIViewController.Type) -> Self {
