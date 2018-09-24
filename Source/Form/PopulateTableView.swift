@@ -465,7 +465,11 @@ class PopulateTableView: FormItemVisitor {
 	func visit(object: StaticTextFormItem) {
 		var model = StaticTextCellModel()
 		model.title = object.title
+		model.titleColor = object.titleColor
+		model.titleFont = object.titleFont
 		model.value = object.value
+		model.valueColor = object.valueColor
+		model.valueFont = object.valueFont
 		let cell = StaticTextCell(model: model)
 		cells.append(cell)
 		lastItemType = .item
