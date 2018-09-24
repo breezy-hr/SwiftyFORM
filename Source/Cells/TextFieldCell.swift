@@ -76,7 +76,7 @@ public class TextFieldFormItemCell: UITableViewCell {
 
 		titleLabel.font = model.titleFont
 		titleLabel.textColor = model.titleColor
-		errorLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.caption2)
+		errorLabel.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.caption2)
 
 		errorLabel.textColor = UIColor.red
 		errorLabel.numberOfLines = 0
