@@ -1,4 +1,4 @@
-// MIT license. Copyright (c) 2017 SwiftyFORM. All rights reserved.
+// MIT license. Copyright (c) 2018 SwiftyFORM. All rights reserved.
 import UIKit
 
 public struct TextViewFormItemCellSizes {
@@ -39,7 +39,7 @@ public class TextViewCell: UITableViewCell {
 		titleLabel.textColor = model.titleColor
 
 		placeholderLabel.text = model.placeholder
-		placeholderLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+		placeholderLabel.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.body)
 		placeholderLabel.textColor = UIColor.lightGray
 
 		textView.font = model.textFont
@@ -149,7 +149,7 @@ public class TextViewCell: UITableViewCell {
 		var layoutMargins = self.layoutMargins
 		layoutMargins.top = 0
 		layoutMargins.bottom = 0
-		veryTallCell = UIEdgeInsetsInsetRect(veryTallCell, layoutMargins)
+		veryTallCell = veryTallCell.inset(by: layoutMargins)
 
 		var (slice, remainder) = veryTallCell.divided(atDistance: 10, from: .minYEdge)
 

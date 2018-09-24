@@ -1,4 +1,4 @@
-// MIT license. Copyright (c) 2017 SwiftyFORM. All rights reserved.
+// MIT license. Copyright (c) 2018 SwiftyFORM. All rights reserved.
 import UIKit
 
 public class CustomTextField: UITextField {
@@ -84,7 +84,7 @@ public class TextFieldFormItemCell: UITableViewCell {
 		textField.configure()
 		textField.delegate = self
 
-		textField.addTarget(self, action: #selector(TextFieldFormItemCell.valueDidChange), for: UIControlEvents.editingChanged)
+		textField.addTarget(self, action: #selector(TextFieldFormItemCell.valueDidChange), for: UIControl.Event.editingChanged)
 
 		contentView.addSubview(titleLabel)
 		contentView.addSubview(textField)
@@ -188,7 +188,7 @@ public class TextFieldFormItemCell: UITableViewCell {
 		var layoutMargins = self.layoutMargins
 		layoutMargins.top = 0
 		layoutMargins.bottom = 0
-		let area = UIEdgeInsetsInsetRect(veryTallCell, layoutMargins)
+		let area = veryTallCell.inset(by: layoutMargins)
 
 		let (topRect, _) = area.divided(atDistance: 44, from: .minYEdge)
 		do {
