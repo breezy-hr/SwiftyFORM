@@ -34,6 +34,20 @@ public class PickerViewFormItem: FormItem {
 		self.titleFont = font
 		return self
 	}
+	
+	public var textColor: UIColor = UIColor.black
+	@discardableResult
+	public func textColor(_ color: UIColor?) -> Self {
+		self.textColor = color ?? .black
+		return self
+	}
+	
+	public var textFont: UIFont = .preferredFont(forTextStyle: .body)
+	@discardableResult
+	public func textFont(_ font: UIFont) -> Self {
+		self.textFont = font
+		return self
+	}
 
 	/**
 	### Collapsed
