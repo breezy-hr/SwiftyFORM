@@ -146,10 +146,8 @@ public class TextViewCell: UITableViewCell {
 		var maxY: CGFloat = 0
 		var veryTallCell = CGRect(x: 0, y: 0, width: cellWidth, height: CGFloat.greatestFiniteMagnitude)
 
-		var layoutMargins = self.layoutMargins
-		layoutMargins.top = 0
-		layoutMargins.bottom = 0
-		veryTallCell = veryTallCell.inset(by: layoutMargins)
+		let margins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+		veryTallCell = veryTallCell.inset(by: margins)
 
 		var (slice, remainder) = veryTallCell.divided(atDistance: 10, from: .minYEdge)
 
@@ -195,9 +193,7 @@ public class TextViewCell: UITableViewCell {
 		placeholderLabel.frame = sizes.placeholderLabelFrame
 		textView.frame = sizes.textViewFrame
 
-		var textViewInset = self.layoutMargins
-		textViewInset.top = 5
-		textViewInset.bottom = 10
+		let textViewInset = UIEdgeInsets(top: 5, left: 15, bottom: 10, right: 15)
 		textView.textContainerInset = textViewInset
 	}
 

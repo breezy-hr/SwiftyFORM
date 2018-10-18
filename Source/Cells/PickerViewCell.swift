@@ -30,7 +30,7 @@ public class PickerViewCellModel {
 			let title = titles[component][row]
 			result.append(title)
 		}
-		return result.joined(separator: humanReadableValueSeparator ?? ",")
+		return result.joined(separator: humanReadableValueSeparator ?? ", ")
 	}
 }
 

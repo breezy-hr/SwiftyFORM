@@ -524,6 +524,7 @@ class PopulateTableView: FormItemVisitor {
 		model.title = object.title
 		model.titleColor = object.titleColor
 		model.titleFont = object.titleFont
+		model.switchColor = object.switchColor
 
 		weak var weakObject = object
 		model.valueDidChange = { (value: Bool) in

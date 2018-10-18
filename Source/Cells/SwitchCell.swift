@@ -5,6 +5,7 @@ public struct SwitchCellModel {
 	var title: String = ""
 	var titleColor: UIColor = UIColor.black
 	var titleFont: UIFont = .preferredFont(forTextStyle: .body)
+	var switchColor: UIColor? = nil
 
 	var valueDidChange: (Bool) -> Void = { (value: Bool) in
 		SwiftyFormLog("value \(value)")
@@ -26,6 +27,7 @@ public class SwitchCell: UITableViewCell {
 
 		switchView.addTarget(self, action: #selector(SwitchCell.valueChanged), for: .valueChanged)
 		accessoryView = switchView
+		switchView.onTintColor = model.switchColor
 	}
 
 	public required init(coder aDecoder: NSCoder) {

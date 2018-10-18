@@ -27,6 +27,13 @@ public class SwitchFormItem: FormItem {
 		self.titleFont = font
 		return self
 	}
+	
+	public var switchColor: UIColor? = nil
+	@discardableResult
+	public func switchColor(_ color: UIColor) -> Self {
+		self.switchColor = color
+		return self
+	}
 
 	public typealias SyncBlock = (_ value: Bool, _ animated: Bool) -> Void
 	public var syncCellWithValue: SyncBlock = { (value: Bool, animated: Bool) in
