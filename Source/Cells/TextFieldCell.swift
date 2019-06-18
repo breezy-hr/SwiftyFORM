@@ -3,7 +3,6 @@ import UIKit
 
 public class CustomTextField: UITextField {
 	public func configure() {
-//		backgroundColor = UIColor.white
 		autocapitalizationType = .sentences
 		autocorrectionType = .default
 		spellCheckingType = .no

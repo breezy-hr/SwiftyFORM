@@ -6,7 +6,7 @@ public struct ButtonCellModel {
 	var titleColor: UIColor = .black
 	var titleFont: UIFont = .preferredFont(forTextStyle: .body)
 	var titleAlignment: NSTextAlignment = .center
-	var backgroundColor: UIColor = .clear
+	var backgroundColor: UIColor?
 
 	var action: () -> Void = {
 		SwiftyFormLog("action")

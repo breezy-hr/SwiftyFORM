@@ -34,9 +34,9 @@ public class ButtonFormItem: FormItem {
 		return self
 	}
 	
-	public var backgroundColor: UIColor = .white
+	public var backgroundColor: UIColor?
 	@discardableResult
-	public func backgroundColor(_ backgroundColor: UIColor) -> Self {
+	public func backgroundColor(_ backgroundColor: UIColor?) -> Self {
 		self.backgroundColor = backgroundColor
 		return self
 	}
