@@ -32,7 +32,7 @@ public class ButtonCell: UITableViewCell, SelectRowDelegate {
 		textLabel?.textColor = model.titleColor
 		textLabel?.font = model.titleFont
 		textLabel?.textAlignment = model.titleAlignment
-		self.backgroundColor = model.backgroundColor
+		if let backgroundColor = model.backgroundColor { self.backgroundColor = backgroundColor }
 	}
 
 	public func form_didSelectRow(indexPath: IndexPath, tableView: UITableView) {
