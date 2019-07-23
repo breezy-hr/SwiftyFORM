@@ -82,6 +82,8 @@ public class DatePickerToggleCell: UITableViewCell, SelectRowDelegate, DontColla
 			return .short
 		case .countDownTimer:
 			return .none
+		@unknown default:
+			return .full
 		}
 	}
 
@@ -95,6 +97,8 @@ public class DatePickerToggleCell: UITableViewCell, SelectRowDelegate, DontColla
 			return .short
 		case .countDownTimer:
 			return .short
+		@unknown default:
+			return .full
 		}
 	}
 
